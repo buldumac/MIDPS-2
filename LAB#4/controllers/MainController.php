@@ -6,7 +6,7 @@ class MainController {
 
         return miranda()->make('index', array(
             // Githun account news.
-            'github' => Github::result( 4 ),
+            'github' => Github::result( 5 ),
             'articles'  =>  Articles::get_all_articles(),
         ));
     }

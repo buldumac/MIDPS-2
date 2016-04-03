@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>Mini Blog</title>
+<title>{{ Config::get('project.header_title') }}</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="/view/css/1.css" type="text/css" media="screen,projection" />
 <script type="text/javascript" src="/view/js/jquery-2.2.2.min.js"></script>
@@ -21,8 +21,8 @@
     <h1>Github news</h1>
     <p>
       @begin foreach( $github as $id => $row )
-      - <b>{{ $row['title'] }}</b><br>
-      <i>{{ date( 'j M, H:i:s', $row['time'] ); }}</i><br>
+      <b>{{ $row['title'] }}</b><br>
+      <i>{{ date( 'j M, H:i:s', $row['time'] ); }}</i><br><br>
       @end
     </p>
   </div>
