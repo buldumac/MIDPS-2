@@ -1,8 +1,5 @@
 <?php
 
-use \Twig_Loader_Filesystem;
-use \Twig_Environment;
-
 class UserController {
 
     public static function index() {
