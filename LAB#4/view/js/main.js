@@ -22,6 +22,15 @@ $( document ).ready(function() {
         if( ! author ) { alert( 'Author is empty!' ); return; }
         if( ! text ) { alert( 'Text is empty!' ); return; }
 
+        $.ajax({
+            type: 'POST',
+            url: 'http://127.0.0.1:9999/home/new_article',
+            data: 'content=' + JSON.stringify( [title, author, text] ),
+            success: function(data){
+                // Redirect to home page.
+                window.location.replace("/");
+            }
+        });
     });
 
 });

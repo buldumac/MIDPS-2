@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <title>Mini Blog</title>
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="/view/css/1.css" type="text/css" media="screen,projection" />
-  <script type="text/javascript" src="/view/js/jquery-2.2.2.min.js"></script>
-  <script type="text/javascript" src="/view/js/main.js"></script>
+<script type="text/javascript" src="/view/js/jquery-2.2.2.min.js"></script>
+<script type="text/javascript" src="/view/js/main.js"></script>
 </head>
 <body>
 <div id="container">
@@ -28,9 +28,10 @@
   </div>
   <div id="content">
     <div class="articles">
-      <h1><a href="#intro" id="intro">Introduction</a></h1>
-      <h2>Everyting needs an intro!</h2>
-      <p> Hello and welcome to miniBLOG! Thi've left everything very plain using mainly greys. These colours are all easily changed via the stylesheet. The backgorund image can be changed easily too by opening it in a graphics program and adjusting the hue/saturation. Got something to say? Say it with miniBLOG! </p>
+      @begin foreach( $articles as $id => $row )
+      <h1>{{ $row['title'] }}</h1>
+      <p>{{ $row['text'] }}</p>
+      @end
     </div>
 
     <div class="new-article hide">
