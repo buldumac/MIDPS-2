@@ -270,3 +270,18 @@ a {
 	color:#333;
 	text-decoration:none;
 }
+
+.hide {
+	display: none;
+}
+
+input[type=text] {
+	width: 250px;
+	border: 1px gray solid;
+}
+
+textarea {
+	width: 280px;
+	height: 150px;
+	border: 1px gray solid;
+}

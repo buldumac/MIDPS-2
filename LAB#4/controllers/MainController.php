@@ -10,4 +10,9 @@ class MainController {
         ));
     }
 
+    public static function articles() {
+        $a = Articles::get_all_articles();
+        print_r( $a );
+    }
+
 }
