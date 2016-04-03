@@ -6,12 +6,6 @@ $( document ).ready(function() {
         $('.new-article').removeClass('hide');
     } );
 
-    // Home button.
-    $('.home').on( 'click', function() {
-        $('.articles').removeClass('hide');
-        $('.new-article').addClass('hide');
-    } );
-
     // Add new Article.
     $('.create-article').on( 'click', function() {
         var title = $('input[name=title]').val();
@@ -27,10 +21,35 @@ $( document ).ready(function() {
             url: 'http://127.0.0.1:9999/home/new_article',
             data: 'content=' + JSON.stringify( [title, author, text] ),
             success: function(data){
-                // Redirect to home page.
-                window.location.replace("/");
+                // Success!
+                alert( 'Article was created with success!' );
+                $('input[type=text]').val('');
+                $('textarea').val('');
             }
         });
+    });
+
+    // Show article content.
+    $('.article-status').on( 'click', function() {
+
+        var article_id = $(this).data('id');
+
+        if( 'show article' == $(this).text() ) {
+            $(this).text('hide content')
+            // Get article content with json.
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:9999/home/get_article_content',
+                data: 'id=' + article_id,
+                success: function(data){
+                    $('.article-' + article_id + '-content').removeClass('hide');
+                    $('.article-' + article_id + '-content').text( data );
+                }
+            });
+        } else {
+            $(this).text('show article')
+            $('.article-' + article_id + '-content').addClass('hide');
+        }
     });
 
 });

@@ -15,4 +15,11 @@ class MainController {
         Articles::add_new_article( $_POST['content'] );
     }
 
+    public static function get_article_content() {
+        $id = $_POST['id'];
+        if( is_numeric( $id ) ) {
+            return Articles::get_content( $id );
+        }
+    }
+
 }

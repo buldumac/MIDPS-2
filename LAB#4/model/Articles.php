@@ -42,11 +42,22 @@ class Articles {
         $filename = Config::get( 'project.articles_files' ) . "{$last_id}.php";
         file_put_contents($filename, json_encode(
             array(
+                'id'    =>  $last_id,
                 'title' =>  $data[0],
                 'author'    =>  $data[1],
                 'text'  =>  $data[2],
             )
         ));
+    }
+
+    public static function get_content( $article_id ) {
+        $filename = Config::get( 'project.articles_files' ) . "{$article_id}.php";
+        $content = json_decode( file_get_contents( $filename ), true);
+        if( isset( $content['text'] ) ) {
+            return $content['text'];
+        } else {
+            return '';
+        }
     }
 
 }

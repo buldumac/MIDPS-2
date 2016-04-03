@@ -30,7 +30,8 @@
     <div class="articles">
       @begin foreach( $articles as $id => $row )
       <h1>{{ $row['title'] }}</h1>
-      <p>{{ $row['text'] }}</p>
+      <h2>[ <a href="#" class="delete-me" data-id="{{ $row['id'] }}">delete this article</a> ] [ <a href="#" class="article-status" data-id="{{ $row['id'] }}">show article</a> ]</h2>
+      <div class="article-{{ $row['id'] }}-content"></div>
       @end
     </div>
 
