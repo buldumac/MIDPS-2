@@ -3,11 +3,18 @@
 class MainController {
 
     public static function index( $params=array() ) {
-
         return miranda()->make('index', array(
             // Githun account news.
             'github' => Github::result( 5 ),
+            // Show all articles.
             'articles'  =>  Articles::get_all_articles(),
+        ));
+    }
+
+    public static function about() {
+        return miranda()->make('about', array(
+            // Githun account news.
+            'github' => Github::result( 5 ),
         ));
     }
 
