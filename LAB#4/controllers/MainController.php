@@ -22,4 +22,11 @@ class MainController {
         }
     }
 
+    public static function delete_article() {
+        $id = $_POST['id'];
+        if( is_numeric( $id ) ) {
+            return Articles::delete( $id );
+        }
+    }
+
 }

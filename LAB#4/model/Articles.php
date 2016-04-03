@@ -46,6 +46,7 @@ class Articles {
                 'title' =>  $data[0],
                 'author'    =>  $data[1],
                 'text'  =>  $data[2],
+                'unix'  => time(),
             )
         ));
     }
@@ -58,6 +59,11 @@ class Articles {
         } else {
             return '';
         }
+    }
+
+    public static function delete( $article_id ) {
+        $filename = Config::get( 'project.articles_files' ) . "{$article_id}.php";
+        @unlink( $filename );
     }
 
 }
