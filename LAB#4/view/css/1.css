@@ -142,6 +142,7 @@ ul.submenu {
 
 #content {
 	margin:10px 185px 10px 10px;
+	min-height: 300px;
 }
 #content h1 {
 	font-family:Trebuchet MS, Geneva, Arial, Helvetica, sans-serif;

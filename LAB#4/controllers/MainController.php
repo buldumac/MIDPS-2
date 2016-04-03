@@ -3,11 +3,11 @@
 class MainController {
 
     public static function index( $params=array() ) {
-        return miranda()->make('index', array('bingo'=>'azazazaza'));
-    }
+        $github = Github::result(3);
 
-    public static function git() {
-        return Github::result();
+        return miranda()->make('index', array(
+            'github' => $github,
+        ));
     }
 
 }
