@@ -43,30 +43,35 @@ class PongGame(Widget):
     def update(self, dt):
         self.ball.move()
 
-        # Setarea datelor de `lovire` a mingii de fiecare jucator.
+        #bounce ball off paddles
         self.player1.bounce_ball(self.ball)
         self.player2.bounce_ball(self.ball)
 
-        # Setarea lovirii mingii de marginea de sus sau de jos.
+        #bounce ball off bottom or top
         if (self.ball.y < self.y) or (self.ball.top > self.top):
             self.ball.velocity_y *= -1
 
-        # Daca mingea a trecut limita unui jucator, adaugam un punct celuilalt jucator.
+        #went off a side to score point?
         if self.ball.x < self.x:
             self.player2.score += 1
             self.serve_ball(vel=(4, 0))
 
-            # Postam statusul curent pe Twitter.
+            # Update Twitter Score.
             self.post_on_twitter('Player[1]: %d VS Player[2] %d' % (self.player1.score, self.player2.score))
 
         if self.ball.x > self.width:
             self.player1.score += 1
             self.serve_ball(vel=(-4, 0))
 
-            # Postam statusul curent pe Twitter.
+            # Update Twitter Score.
             self.post_on_twitter('Player[1]: %d VS Player[2] %d' % (self.player1.score, self.player2.score))
 
     def post_on_twitter(self, text):
+        """
+        Postarea rezultatelor jocului in Twitter.
+        :param text: Textul postarii
+        :return: void
+        """
         req = UrlRequest('http://url.md/tw/?content=%s&pass=00113' % quote( text ) )
         req.wait()
 
